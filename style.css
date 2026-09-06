@@ -1,0 +1,387 @@
+/* =========================================================
+   STYLE ANTI-BULLYING & KEBERSIHAN LINGKUNGAN (BLUE TONE)
+   ========================================================= */
+
+:root {
+  --primary-blue: #00d2ff;
+  --vibrant-blue: #0066ff;
+  --neon-blue: #00f0ff;
+  --dark-bg: #030a16;
+  --glass-border-dark: rgba(0, 210, 255, 0.3);
+  --text-dark: #f0f6ff;
+  --text-muted: #8ab4f8;
+  --glass-bg: rgba(6, 20, 45, 0.65);
+  --glass-blur: blur(20px);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.light-mode {
+  --glass-bg: rgba(230, 242, 255, 0.75);
+  --text-dark: #07152e;
+  --text-muted: #1d4ed8;
+  --dark-bg: #e6f0fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  cursor: none;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-dark);
+  background-color: var(--dark-bg);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Layer */
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.bg-custom-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(135deg, #020b18 0%, #002b66 50%, #0055ff 100%);
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(3, 10, 22, 0.4) 0%, rgba(3, 10, 22, 0.85) 100%);
+  z-index: 1;
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--neon-blue);
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px var(--neon-blue);
+}
+
+.custom-cursor-outline {
+  width: 38px;
+  height: 38px;
+  border: 2px solid rgba(0, 210, 255, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+body.cursor-hover .custom-cursor-outline {
+  width: 54px;
+  height: 54px;
+  border-color: var(--primary-blue);
+  background-color: rgba(0, 210, 255, 0.12);
+}
+
+/* Transition Overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--vibrant-blue), var(--neon-blue));
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.2s;
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 8px 32px 0 rgba(0, 102, 255, 0.25);
+  border-radius: var(--radius-lg);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 14px 28px;
+  width: 90%;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-blue), var(--vibrant-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-actions { display: flex; gap: 12px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-dark);
+}
+
+.btn-next {
+  background: linear-gradient(135deg, var(--vibrant-blue), var(--primary-blue));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+  font-size: 1rem;
+}
+
+/* Ripple & Morph */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+.btn.morphing {
+  border-radius: 30px;
+  transform: scale(0.95);
+}
+
+/* Floating Animation */
+@keyframes floatAnim {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-box {
+  animation: floatAnim 5s ease-in-out infinite;
+}
+
+.floating-box:hover {
+  animation-play-state: paused;
+}
+
+/* Main Layout & Text Boxes */
+.main-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  animation: fadeIn 0.4s ease;
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lottie-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Kotak Teks Interaktif */
+.text-box {
+  padding: 28px;
+  text-align: left;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.1s;
+  user-select: none;
+}
+
+.text-box:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 12px 35px rgba(0, 210, 255, 0.35);
+}
+
+/* Efek saat Kotak Diklik */
+.text-box.box-clicked {
+  animation: boxPulse 0.4s ease;
+  border-color: var(--primary-blue);
+}
+
+@keyframes boxPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+.badge-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(0, 210, 255, 0.2);
+  color: var(--neon-blue);
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.badge-tag.green {
+  background: rgba(0, 230, 118, 0.2);
+  color: #00e676;
+}
+
+.box-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--neon-blue);
+  margin-bottom: 10px;
+}
+
+.box-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.box-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.next-page-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 40px;
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Command Palette */
+.cmd-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(3, 10, 22, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cmd-box { width: 90%; max-width: 500px; padding: 10px; }
+
+.cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--glass-border-dark);
+}
+
+.cmd-header input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-dark);
+}
+
+.cmd-esc { font-size: 0.75rem; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; }
+.cmd-list { list-style: none; padding: 8px 0; }
+
+.cmd-list li {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius-md);
+}
+
+.cmd-list li:hover { background: rgba(0, 210, 255, 0.2); color: var(--neon-blue); }
+
+.footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.85rem; }

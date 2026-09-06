@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aksi Kebaikan - Anti-Bullying & Kebersihan Lingkungan</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Vanilla Tilt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+</head>
+<body class="dark-mode">
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-outline" id="cursorOutline"></div>
+
+  <!-- Background Layer (Custom Galeri / Default Solid Blue Gradient) -->
+  <div class="bg-container" id="bgContainer">
+    <div id="bgCustomImage" class="bg-custom-image"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Page Transition Overlay -->
+  <div class="page-transition-overlay" id="pageTransition"></div>
+
+  <!-- Navbar -->
+  <header class="navbar glass-panel">
+    <div class="logo-container">
+      <h1 class="logo-text" id="logoText" data-scramble="StopBullying.id">StopBullying.id</h1>
+    </div>
+    <div class="nav-actions">
+      <!-- Upload Custom Background dari Galeri -->
+      <label for="customBgInput" class="btn btn-icon magnetic-btn" title="Ganti Background dari Galeri">
+        <i data-lucide="image"></i>
+        <input type="file" id="customBgInput" accept="image/*,video/*" style="display: none;">
+      </label>
+      <button class="btn btn-icon magnetic-btn" id="themeToggle" title="Toggle Dark/Light">
+        <i data-lucide="sun" class="sun-icon"></i>
+        <i data-lucide="moon" class="moon-icon"></i>
+      </button>
+      <button class="btn btn-icon magnetic-btn" id="cmdPaletteBtn" title="Command Palette (Ctrl+K)">
+        <i data-lucide="terminal"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- PAGE 1: Anti-Bullying -->
+    <div id="pageBullying" class="page-content active">
+      
+      <!-- Banner Lottie Animation -->
+      <div class="lottie-wrapper scroll-reveal">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      </div>
+
+      <!-- Hero Header Text Box -->
+      <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="10">
+        <span class="badge-tag">Kampanye Edukasi</span>
+        <h2 class="box-title">Bersama Hentikan Bullying!</h2>
+        <p class="box-desc">Klik kotak ini untuk memberikan apresiasi dukunganmu dalam menciptakan lingkungan yang aman dan saling menghargai.</p>
+      </div>
+
+      <!-- Edukasi Anti-Bullying Grid -->
+      <div class="content-grid">
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="shield-alert" class="box-icon"></i>
+          <h3 class="box-title">Apa Itu Bullying?</h3>
+          <p class="box-desc">Tindakan agresif yang dilakukan secara berulang untuk menyakiti orang lain, baik secara fisik, verbal, maupun siber (cyberbullying).</p>
+        </div>
+
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="heart-handshake" class="box-icon"></i>
+          <h3 class="box-title">Cara Mencegahnya</h3>
+          <p class="box-desc">Tumbuhkan rasa empati, rangkul teman yang menyendiri, dan hindari menyebarkan ujaran kebencian di media sosial.</p>
+        </div>
+
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="megaphone" class="box-icon"></i>
+          <h3 class="box-title">Berani Melapor</h3>
+          <p class="box-desc">Jangan diam saat melihat penindasan. Laporkan kepada guru, orang tua, atau pihak berwajib untuk menghentikan dampaknya.</p>
+        </div>
+      </div>
+
+      <!-- Tombol Halaman Berikutnya -->
+      <div class="next-page-wrapper">
+        <button class="btn btn-next magnetic-btn ripple-btn morph-btn" id="btnNextPage">
+          <span>Berikutnya: Menjaga Kebersihan Lingkungan</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- PAGE 2: Kebersihan Lingkungan -->
+    <div id="pageEnvironment" class="page-content hidden">
+
+      <!-- Banner Lottie Animation -->
+      <div class="lottie-wrapper scroll-reveal">
+        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_m64871cx.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      </div>
+
+      <!-- Hero Header Text Box -->
+      <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="10">
+        <span class="badge-tag green">Aksi Hijau</span>
+        <h2 class="box-title">Menjaga Kebersihan Lingkungan</h2>
+        <p class="box-desc">Klik kotak ini jika kamu setuju bahwa lingkungan yang bersih adalah cermin dari pikiran dan tindakan yang sehat.</p>
+      </div>
+
+      <!-- Edukasi Kebersihan Grid -->
+      <div class="content-grid">
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="trash-2" class="box-icon"></i>
+          <h3 class="box-title">Kelola Sampah</h3>
+          <p class="box-desc">Pisahkan sampah organik dan anorganik serta biasakan membuang sampah pada tempatnya di mana pun berada.</p>
+        </div>
+
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="trees" class="box-icon"></i>
+          <h3 class="box-title">Penghijauan</h3>
+          <p class="box-desc">Tanam pohon dan rawat tanaman di sekitar rumah untuk menjaga kesegaran udara dan pasokan oksigen.</p>
+        </div>
+
+        <div class="text-box glass-panel floating-box tilt-element click-box scroll-reveal" data-tilt data-tilt-max="12">
+          <i data-lucide="droplet" class="box-icon"></i>
+          <h3 class="box-title">Hemat Air & Energi</h3>
+          <p class="box-desc">Gunakan air bersih secara bijak dan matikan perangkat listrik yang tidak terpakai untuk kelestarian bumi.</p>
+        </div>
+      </div>
+
+      <!-- Tombol Kembali ke Anti-Bullying -->
+      <div class="next-page-wrapper">
+        <button class="btn btn-next magnetic-btn ripple-btn morph-btn" id="btnPrevPage">
+          <i data-lucide="arrow-left"></i>
+          <span>Kembali ke Kampanye Anti-Bullying</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Command Palette Overlay -->
+  <div class="cmd-overlay hidden" id="cmdOverlay">
+    <div class="cmd-box glass-panel">
+      <div class="cmd-header">
+        <i data-lucide="search"></i>
+        <input type="text" id="cmdInput" placeholder="Ketik perintah (theme, bg, next, prev)...">
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <ul class="cmd-list" id="cmdList">
+        <li data-action="theme"><i data-lucide="sun-moon"></i> Switch Dark / Light Mode</li>
+        <li data-action="custombg"><i data-lucide="image"></i> Ganti Background Galeri</li>
+        <li data-action="next"><i data-lucide="arrow-right"></i> Pindah ke Kebersihan Lingkungan</li>
+        <li data-action="prev"><i data-lucide="arrow-left"></i> Pindah ke Anti-Bullying</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Kampanye Edukasi - Stop Bullying & Jaga Lingkungan.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
